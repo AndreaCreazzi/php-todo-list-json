@@ -40,7 +40,9 @@
           <!-- lista -->
           <div class="container mt-4">
             <ul class="list-group">
-              <li class="list-group-item">An item</li>
+              <li v-for="(list , i) in lists" :key="i" class="list-group-item">
+                {{list}}
+              </li>
             </ul>
             <!-- input aggiunta task -->
             <form @submit.prevent="">
