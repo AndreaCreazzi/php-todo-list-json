@@ -5,11 +5,14 @@ const { createApp } = Vue;
 const app = createApp({
   data() {
     return {
+      // array lista
       lists: [],
+      //   input aggiunta nella lista
       newList: "",
     };
   },
   methods: {
+    // funzione per aggiungere testo nella lista
     addList() {
       const data = { list: this.newList };
       const config = {
@@ -30,10 +33,12 @@ const app = createApp({
           this.newList = "";
         });
     },
+    // funzione per aggiungere la classe nella lista
     toggleCompleted(index) {
       this.lists[index].completed = !this.lists[index].completed;
     },
   },
+  //   recupero axios
   created() {
     axios.get("http://localhost/php-todo-list-json/api/list/").then((res) => {
       this.lists = res.data.map((task) => {
