@@ -25,15 +25,46 @@
       crossorigin="anonymous"
     ></script>
     <!-- vue -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.min.js"
-      integrity="sha512-Wbf9QOX8TxnLykSrNGmAc5mDntbpyXjOw9zgnKql3DgQ7Iyr5TCSPWpvpwDuo+jikYoSNMD9tRRH854VfPpL9A=="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- css -->
     <link rel="stylesheet" href="css/style.css" />
     <!-- js -->
     <script defer src="js/script.js"></script>
   </head>
-  <body></body>
+  <body class="bg-dark">
+    <div id="root">
+      <main class="mt-4">
+        <div class="container text-white">
+          <!-- titolo -->
+          <h1 class="text-center text-warning">Lista di cose da fare:</h1>
+          <!-- lista -->
+          <div class="container mt-4">
+            <ul class="list-group">
+              <li class="list-group-item">An item</li>
+            </ul>
+            <!-- input aggiunta task -->
+            <form @submit.prevent="">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control mt-3"
+                  placeholder="Inserisci qualcosa di nuovo da fare"
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
+                />
+                <!-- bottone applica -->
+                <button
+                  class="btn btn-success mt-3"
+                  type="submit"
+                  id="button-addon2"
+                >
+                  Applica
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>
