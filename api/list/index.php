@@ -8,6 +8,16 @@ $json_data = file_get_contents($database_path);
 
 $list = json_decode($json_data, true);
 
-header('Content_Type: application/json');
+$newlist = $_POST['list'] ?? null;
+if ($newlist) {
+    $list[] = $newlist;
 
-echo json_encode($list);
+    $json_list = json_encode($list);
+    file_put_contents($database_path, $json_list);
+
+    echo $newlist;
+} else {
+    header('Content_Type: application/json');
+
+    echo json_encode($list);
+};

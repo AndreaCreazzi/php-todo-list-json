@@ -45,10 +45,11 @@
               </li>
             </ul>
             <!-- input aggiunta task -->
-            <form @submit.prevent="">
+            <form @submit.prevent="addList">
               <div class="input-group mb-3">
                 <input
                   type="text"
+                  v-model="newList"
                   class="form-control mt-3"
                   placeholder="Inserisci qualcosa di nuovo da fare"
                   aria-label="Recipient's username"
