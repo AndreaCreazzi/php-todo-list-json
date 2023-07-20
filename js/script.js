@@ -20,14 +20,25 @@ const app = createApp({
       axios
         .post("http://localhost/php-todo-list-json/api/list/", data, config)
         .then((res) => {
-          this.lists.push(res.data);
+          axios
+            .get("http://localhost/php-todo-list-json/api/list/")
+            .then((res) => {
+              this.lists = res.data.map((task) => {
+                return { task: task, completed: false };
+              });
+            });
           this.newList = "";
         });
+    },
+    toggleCompleted(index) {
+      this.lists[index].completed = !this.lists[index].completed;
     },
   },
   created() {
     axios.get("http://localhost/php-todo-list-json/api/list/").then((res) => {
-      this.lists = res.data;
+      this.lists = res.data.map((task) => {
+        return { task: task, completed: false };
+      });
     });
   },
 });

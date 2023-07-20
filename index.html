@@ -41,7 +41,14 @@
           <div class="container mt-4">
             <ul class="list-group">
               <li v-for="(list , i) in lists" :key="i" class="list-group-item">
-                {{list}}
+                <span :class="{ 'completed': list.completed }">
+                  <input
+                    type="checkbox"
+                    v-model="list.completed"
+                    @click="toggleCompleted(i)"
+                  />
+                  {{ list.task }}
+                </span>
               </li>
             </ul>
             <!-- input aggiunta task -->
