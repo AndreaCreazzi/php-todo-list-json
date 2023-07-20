@@ -12,7 +12,7 @@ const app = createApp({
     };
   },
   methods: {
-    // funzione per aggiungere testo nella lista
+    // funzione per aggiungere un task nella lista
     addList() {
       const data = { list: this.newList };
       const config = {
@@ -33,12 +33,16 @@ const app = createApp({
           this.newList = "";
         });
     },
-    // funzione per aggiungere la classe nella lista
+    // funzione per aggiungere il segno al task nella lista
     toggleCompleted(index) {
       this.lists[index].completed = !this.lists[index].completed;
     },
+    // funzione per eliminare un task
+    deleteList(index) {
+      this.lists.splice(index, 1);
+    },
   },
-  //   recupero axios
+  // recupero axios
   created() {
     axios.get("http://localhost/php-todo-list-json/api/list/").then((res) => {
       this.lists = res.data.map((task) => {
